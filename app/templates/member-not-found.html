@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-member-not-found">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="text-center">
+        <h1>Member Record Not Found</h1>
+        <h2>Please reenter your membership number.</h2>
+        <form action="" method="post" name="index">
+            {{ form.hidden_tag() }}
+            <br/>
+            <input class="button secondary" type="submit" value="Retry">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-register-to-vote">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="text-center">
+        <h1>You're Requesting a <br/>Voter Registration Email</h1>
+        <div class="row">
+          <div class="small-3 columns">
+            &nbsp;
+          </div>
+          <div class="small-6 columns">
+          After you click the button below, you will be sent an email to your registered email address from DMS.  In order to register for voting rights, you must reply to this email. If you haven't received a notification that you have been registered within 72 hours, please follow-up.  Please note that only primary account holders have voting privileges.
+        </div>
+        <div class="small-3 columns">
+          &nbsp;
+        </div>
+      </div>
+      <div class="row">
+        <form action="" method="post" name="register-to-vote">
+            {{ form.hidden_tag() }}
+            
+            <br/>
+            {{ form.register(class='button secondary success') }}
+            <!-- <input class="button secondary success" type="submit" value="Send My Registration Email"> -->
+            <br/>
+            {{ form.cancel(class='button secondary alert') }}
+            <!-- <input class="button secondary alert" type="cancel" value="Cancel Voting Request"> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

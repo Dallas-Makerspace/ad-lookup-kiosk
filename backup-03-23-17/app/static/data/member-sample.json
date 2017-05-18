@@ -1,0 +1,75 @@
+{
+
+  "status": {
+
+    "success": true,
+
+    "message": "Success!"
+
+  },
+
+  "result": {
+
+    "user": {
+
+      "fullName": "Stan Simmons",
+
+      "email": "stan@stansimmons.com",
+
+      "phone": "214-566-7270",
+
+      "username": "stansimmons",
+
+      "groups": [
+
+        "Storage Locker Admins",
+
+        "Infrastructure Secure Share Access",
+
+        "Server Room Access",
+
+        "Storage Closet Access",
+
+        "Electrical Room Access",
+
+        "WeldingSafety",
+
+        "Garage Door Controller Access",
+
+        "Billing Support Team",
+
+        "3dprinterbasics",
+
+        "WoodshopBasics",
+
+        "LaserBasics",
+
+        "Honorarium Admins",
+
+        "Calendar Admins",
+
+        "MakerManager Admins",
+
+        "Voting Members",
+
+        "Google Apps Users",
+
+        "Network View-Only Users",
+
+        "PRLXPBX2 Admins",
+
+        "PRLXPBX1 Admins",
+
+        "Add to Domain",
+
+        "Members"
+
+      ]
+
+    },
+
+    "accessGranted": true
+
+  }
+
+}

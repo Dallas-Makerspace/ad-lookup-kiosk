@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>Member Record Not Found</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script  type="text/javascript" src="/static/js/javascript.js"></script>
+  </head>
+  <body class="page-member-not-found">
+    <h1>Member Record Not Found</h1>
+    <h2>Please try your number again.</h2>
+
+  </body>
+
+</html>

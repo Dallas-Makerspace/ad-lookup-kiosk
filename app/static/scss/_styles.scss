@@ -1,0 +1,31 @@
+body, label {
+	color: #FFFFFF;
+}
+
+.wrapper-main {
+	margin-top: 50px;
+}
+
+.page-index {
+	background-color: #0c5496;
+	
+	h1 {
+		text-align: center;
+	}
+}
+
+.member-details {
+	background-color: #22B573;
+	
+	.hand{
+		width: 25%;
+	}
+}
+
+.member-not-found {
+	background-color: #FF1D25;
+	
+	.hand{
+		width: 50%;
+	}
+}

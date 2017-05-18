@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>Welcome To DMS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script  type="text/javascript" src="/static/js/javascript.js"></script>
+  </head>
+  <body class="page-index">
+    <h1>Membership Lookup</h1>
+    <form action="/member">
+Membership number:<br>
+<input id="member_id" type="text" value=""><br>
+<input type="submit" value="Submit">
+</form>
+  </body>
+</html>

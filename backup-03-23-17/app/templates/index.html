@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-index">
+  <div class="row">
+    <div class="small-12 columns">
+    <h1>Member Info Lookup Portal</h1>
+    Lookup Voting Rights, Equipment Privileges, and other AD Groups.<br><br>
+    <form action="" method="post" name="index">
+        {{ form.hidden_tag() }}
+        RFID number:<br>
+        {{ form.member_id(size=10) }}
+        <input type="submit" value="Submit">
+    </form>
+    <div class="row">
+    <div class="small-12 columns">
+        <h1>Please scan your RFID above.
+      </div>
+    </div>
+  </div>
+    </div>
+</div>
+  {% endblock %}

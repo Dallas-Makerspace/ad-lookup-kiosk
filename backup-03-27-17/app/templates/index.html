@@ -1,0 +1,42 @@
+
+{% extends "base.html" %} {% block content %}
+<div class="page-index">
+    <div class="row">
+        <div class="small-12 columns">
+          <div class="text-center">
+            <h1>Member Info Lookup Portal</h1>
+            <br/>
+            <h2>Please scan your RFID badge</h2>
+          </div>
+        </div>
+        <div class="row">
+            <div class="member-form">
+                <form action="" method="post" name="index">
+                    {{ form.hidden_tag() }}
+                    <div class="small-4 columns">
+                      &nbsp;
+                    </div>
+                    <div class="small-4 columns">
+                        (RFID number)<br/> {{ form.member_id(class_="member_id", size=10) }}
+                        <input class="submit-center button" type="submit" value="Submit">
+                    </div>
+                    <div class="small-4 columns">
+                      &nbsp;
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="small-12 columns">
+                      <div class="text-center">
+                        Lookup Voting Rights, Equipment Priviledges and other AD Groups
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 columns">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
