@@ -9,8 +9,8 @@ from flask_mail import Mail
 
 
 app = Flask(__name__)
-# app.config.from_object('config')
-app.config.from_object(os.environ['APP_SETTINGS'])
+#app.config.from_object('config')
+app.config.from_object(os.environ.get('APP_SETTINGS'))
 # print(app.config)
 mail = Mail(app)
 # toolbar = DebugToolbarExtension(app)
