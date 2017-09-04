@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if error %}
+<script>alert("Printer not ready.")</script>
+{% endif %}
 <div class='row page-member-details'>
 
   <div class="row">
@@ -63,6 +66,13 @@
         {% endfor %}
         </ul>
       </div>
+  </div>
+
+  <div class="small-4 columns">
+    <form action="" method="post" name="index">
+      <input type="hidden" name="member_id" value={{ member_id }}>
+      <input class="submit-center button" type="submit" value="Print">
+    </form>
   </div>
 </div>
 {% endblock %}

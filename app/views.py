@@ -9,6 +9,7 @@ from .forms import MemberNotFoundForm
 from .forms import RegisterToVoteForm
 from .emails import send_email
 from .emails import send_email_request_voting_rights
+from escpos.printer import Usb
 
 @app.before_request
 def session_management():
@@ -30,9 +31,16 @@ def index():
                            form=form)
 
 
-@app.route('/member/<member_id>')
+@app.route('/member/<member_id>', methods=['GET', 'POST'])
 def dms(member_id):
+
+    error = False
+
     # return render_template('member-not-found.html')
+    if request.method == 'POST':
+        member_id = member_id[:-2]                              # remove '">'
+        member_id = member_id[member_id.find('value="') + 7:]   # Keep only id
+
     url = "http://192.168.200.130:8080/api/v1/lookupByRfid"
     payload = "rfid=" + member_id
     headers = {
@@ -80,10 +88,44 @@ def dms(member_id):
             #Process second list(right column)
             ad_group_2 = ad_group[length+1:count]
 
+        if request.method == 'POST':
+            try:
+                print(details)
+            except:
+                error = True
 
-        return render_template('member-details.html', details=details, ad_group_1=ad_group_1, ad_group_2=ad_group_2)
+        return render_template('member-details.html', details=details, ad_group_1=ad_group_1, ad_group_2=ad_group_2, error=error)
     else:
         return redirect(url_for('member_not_found'))
+
+def print(details):
+
+#    p = Usb(0x04B8, 0x0E15, 0)
+    p = Usb(0x0416, 0x05011, 0)
+    p.set(align='center', width=1, height=2)
+    p.text("Maker's Account Information\n\n")
+    p.set(align='left', text_type='B', width=1, height=1)
+    p.text(details['result']['user']['fullName'] + '\n')
+    p.set(align='left')
+    p.text('User name: ' + details['result']['user']['username'] + '\n')
+    p.text(details['result']['user']['email'] + '\n')
+    p.text('Phone: ' + details['result']['user']['phone'] + '\n')
+
+    p.text('\nRegistered to vote: ')
+    p.set(text_type='B')
+    voting_rights_label = "Voting Members"
+    if voting_rights_label in details['result']['user']['groups']:
+        p.text('Yes')
+    else:
+        p.text('No')
+    p.set(align='left')
+    p.text('\n')
+
+    p.text('\nAuthorized Equipment List\n')
+    p.text('(Please report any omissions)\n\n')
+    for element in details['result']['user']['groups']:
+        p.text(element + '\n')
+    p.text('\n\n\n')
 
 @app.route('/register-to-vote/<details>', methods=['GET', 'POST'])
 def register_to_vote(details):
