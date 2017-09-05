@@ -90,7 +90,7 @@ def dms(member_id):
 
         if request.method == 'POST':
             try:
-                print(details)
+                printReport(details)
             except:
                 error = True
 
@@ -98,7 +98,7 @@ def dms(member_id):
     else:
         return redirect(url_for('member_not_found'))
 
-def print(details):
+def printReport(details):
 
 #    p = Usb(0x04B8, 0x0E15, 0)
     p = Usb(0x0416, 0x05011, 0)
