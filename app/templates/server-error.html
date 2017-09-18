@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="text-center">
+        <h1>Server Error</h1>
+        <form action="" method="post" name="index">
+            {{ form.hidden_tag() }}
+            <br/>
+            <input class="button secondary" type="submit" value="Retry">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

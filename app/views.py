@@ -6,10 +6,13 @@ import json
 from wtforms import TextField
 from .forms import IndexForm
 from .forms import MemberNotFoundForm
+from .forms import ServerErrorForm
 from .forms import RegisterToVoteForm
 from .emails import send_email
 from .emails import send_email_request_voting_rights
 from escpos.printer import Usb
+
+serverError = ''
 
 @app.before_request
 def session_management():
@@ -34,6 +37,8 @@ def index():
 @app.route('/member/<member_id>', methods=['GET', 'POST'])
 def dms(member_id):
 
+    global serverError
+
     error = False
 
     # return render_template('member-not-found.html')
@@ -46,8 +51,13 @@ def dms(member_id):
     headers = {
         'content-type': "application/x-www-form-urlencoded",
         }
-    response = requests.request("POST", url, data=payload, headers=headers)
-    details = json.loads(response.text)
+    try:
+        details = ''
+        response = requests.request("POST", url, data=payload, headers=headers)
+        details = json.loads(response.text)
+    except:
+        serverError = str(details)
+        return redirect(url_for('server_error'))
 
     # Did the request return a member's record
     if 'user' in details['result']:
@@ -154,6 +164,22 @@ def member_not_found():
     return render_template('member-not-found.html',
                                         form=form)
 
+
+@app.route('/server-error', methods=['GET', 'POST'])
+def server_error():
+
+    global serverError
+
+    form=ServerErrorForm()
+    if form.validate_on_submit():
+        return redirect(url_for('index'))
+
+    if serverError:
+        flash(serverError)
+        serverError = ''
+
+    return render_template('server-error.html',
+                                        form=form)
 
 @app.route('/test-good')
 def test_good():
