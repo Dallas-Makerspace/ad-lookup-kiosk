@@ -48,3 +48,6 @@ class RegisterToVoteForm(FlaskForm):
 
 class MemberNotFoundForm(FlaskForm):
     hidden = HiddenField()
+
+class ServerErrorForm(FlaskForm):
+    hidden = HiddenField()
