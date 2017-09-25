@@ -46,7 +46,7 @@ def dms(member_id):
         member_id = member_id[:-2]                              # remove '">'
         member_id = member_id[member_id.find('value="') + 7:]   # Keep only id
 
-    url = "http://192.168.200.32:8080/api/v1/lookupByRfid"
+    url = "http://192.168.200.130:8080/api/v1/lookupByRfid"
     payload = "rfid=" + member_id
     headers = {
         'content-type': "application/x-www-form-urlencoded",
@@ -56,8 +56,14 @@ def dms(member_id):
         response = requests.request("POST", url, data=payload, headers=headers)
         details = json.loads(response.text)
     except:
-        serverError = str(details)
-        return redirect(url_for('server_error'))
+        try:
+            url = "http://192.168.200.32:8080/api/v1/lookupByRfid"
+            details = ''
+            response = requests.request("POST", url, data=payload, headers=headers)
+            details = json.loads(response.text)
+        except:
+            serverError = str(details)
+            return redirect(url_for('server_error'))
 
     # Did the request return a member's record
     if 'user' in details['result']:
