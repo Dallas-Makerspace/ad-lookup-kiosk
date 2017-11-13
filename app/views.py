@@ -90,13 +90,13 @@ def dms(member_id):
             #process first list(left column)
             ad_group_1 = ad_group[0:length]
             #Process second list(right column)
-            ad_group_2 = ad_group[length+1:count]
+            ad_group_2 = ad_group[length:count]
         else:
             length = half + 0  # Just to help you incase
             #process first list(left column)
             ad_group_1 = ad_group[0:length]
             #Process second list(right column)
-            ad_group_2 = ad_group[length+1:count]
+            ad_group_2 = ad_group[length:count]
 
         if request.method == 'POST':
             try:
